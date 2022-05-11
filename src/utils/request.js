@@ -1,11 +1,11 @@
-
 import axios from "axios";
 
 axios.defaults.headers.post['content-Type'] = 'application/json';
 
 //1 创建axios baseURL 超时时间
 const service = axios.create({
-  baseURL: "http://www.qcpjfwcx.com:8099/api/index/",
+  // baseURL: "http://www.qcpjfwcx.com:8099/api/index/",
+  baseURL: "http://127.0.0.1:8000/api/index/",
   timeout: 10000,
   // withCredentials: true,
 });

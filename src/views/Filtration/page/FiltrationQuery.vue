@@ -46,31 +46,37 @@
         <input
           type="text"
           name="S"
-          value=""
+          v-model="value"
           placeholder="输入序列号"
           class="large-input code"
         />
-        <input type="submit" value="确认" class="large-input btn" />
+        <input
+          type="submit"
+          value="确认"
+          class="large-input btn"
+          @click="query"
+        />
       </div>
       <p class="instruction" style="clear: both">备注：序列号码区分大小写</p>
       <div style="color: #d80303; font-size: 18px; margin-top: 1.3rem">
         如何鉴别弗列加品牌滤清器的真伪？
       </div>
-      <p class="instruction" style="clear: both; margin-top: 0.5rem">
+      <p class="instruction" style="clear: both; margin-top: 0.7rem">
         第一步：查看防伪标二维码底部序列号是否被激活
       </p>
       <div class="title-block">
         <span class="serial-location">
           <img src="../../../images/auman/val_images_izonseriallocation.jpg" />
         </span>
+        <query-resuult :code="codeValue" :result="result" />
       </div>
       <p class="instruction">第二步：检查产品或包装表面防伪标是否完整无损坏</p>
       <div class="title-block" style="padding-bottom: 0.5rem">
-        <div style="line-height: 1.1rem">
+        <div style="line-height: 1.2rem; margin-top: 1px">
           请检查防伪标是否完整无损坏或存在任何被二次利用的痕迹。
         </div>
 
-        <div style="padding-top: 10px; line-height: 1.1rem">
+        <div style="padding-top: 10px; line-height: 1.2rem">
           新旧标签均使用该防伪设计，请遵照同样的验证说明来鉴别真伪
           <div style="text-align: center">
             <span
@@ -128,7 +134,7 @@
             <span class="tilt_dot_count">可见1个光点</span>
           </span>
         </div>
-        <div class="tilt_block">
+        <div class="tilt_block" style="margin-left: 2.5%">
           <span class="tilt_image">
             <img
               alt="Tilt Back"
@@ -140,7 +146,7 @@
           </span>
         </div>
       </div>
-      <div class="block">
+      <div class="block" style="margin-top: -1.5%">
         <div class="tilt_block">
           <span class="tilt_image">
             <img
@@ -152,7 +158,7 @@
             <span class="tilt_dot_count">可见3个光点</span>
           </span>
         </div>
-        <div class="tilt_block">
+        <div class="tilt_block" style="margin-left: 2.5%">
           <span class="tilt_image">
             <img
               alt="Tilt Forward"
@@ -164,6 +170,7 @@
           </span>
         </div>
       </div>
+
       <p class="instruction" style="margin-top: 1.5%">
         第四步：发现或疑似假件，联系我们
       </p>
@@ -185,8 +192,11 @@
 </template>
 
 <script>
+import QueryResuult from "../components/QueryResuult.vue";
+import { filtrationQueryApi } from "@/api/query";
 export default {
-  name: "AumanQuery",
+  components: { QueryResuult },
+  name: "FiltrationQuery",
   data() {
     return {
       catagory: [
@@ -244,7 +254,68 @@ export default {
         ["AF2772700JX"],
         ["AS0251400MX", "AS0252000MX", "AS0252100MX"],
       ],
+      value: this.$route.query.sequenceCode,
+      codeValue: "",
+      result: null,
+      duration: 1000 * 60 * 30,
     };
+  },
+  methods: {
+    query() {
+      this.codeValue = this.value;
+      if (this.check()) {
+        filtrationQueryApi({ sequenceCode: this.value }).then((response) => {
+          if (response.data.result == "real") {
+            this.result = {
+              type: 1,
+              count: response.data.count,
+            };
+          } else {
+            this.result = {
+              type: 3,
+              count: 1,
+            };
+          }
+        });
+      } else {
+        this.result = {
+          type: 2,
+          count: 1,
+        };
+      }
+      // this.clearCheck();
+    },
+    check() {
+      let queryTime = localStorage.getItem("queryTime");
+      let queryCount = localStorage.getItem("queryCount");
+
+      // 首次查询
+      if (queryTime == "undefined" && queryCount == "undefined") {
+        this.initCheck();
+        return true;
+      } else {
+        let nowTime = new Date().getTime();
+        if (nowTime - queryTime > this.duration) {
+          this.initCheck();
+          return true;
+        } else {
+          if (queryCount < 3) {
+            localStorage.setItem("queryCount", Number(queryCount) + 1);
+            return true;
+          } else {
+            return false;
+          }
+        }
+      }
+    },
+    initCheck() {
+      localStorage.setItem("queryTime", new Date().getTime());
+      localStorage.setItem("queryCount", 1);
+    },
+    clearCheck() {
+      localStorage.setItem("queryTime", undefined);
+      localStorage.setItem("queryCount", undefined);
+    },
   },
 };
 </script>
@@ -258,6 +329,9 @@ export default {
   text-align: left;
   font-family: Arial, Helvetica, sans-serif;
   width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   .header {
     border-bottom: solid 2px #000;
     background: #b61020;
@@ -326,13 +400,11 @@ export default {
       }
     }
     .block {
-      display: flex;
-      justify-content: space-between;
-      width: 98.9%;
+      // background-color: red;
+
       margin-left: 1%;
-      margin-top: -2%;
       .tilt_block {
-        width: 48.5%;
+        width: 47.5%;
         display: inline-block;
         border: 1px solid gray;
         margin-top: 0.85rem;

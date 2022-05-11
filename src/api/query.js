@@ -6,7 +6,7 @@
  */
 import request from "@/utils/request";
 
-// 查询
+// 玉柴查询
 export function ycQueryApi(data) {
     return request({
         url: "ycQuery",
@@ -15,7 +15,7 @@ export function ycQueryApi(data) {
     });
 }
 
-// 获取二维码
+// 玉柴获取二维码
 export function ycQRCodeApi(sequenceCode, encryptCode) {
     return request({
         url: "ycQRCode",
@@ -24,5 +24,14 @@ export function ycQRCodeApi(sequenceCode, encryptCode) {
             sequenceCode,
             encryptCode
         }
+    });
+}
+
+// 弗列加查询
+export function filtrationQueryApi(data) {
+    return request({
+        url: "filtrationQuery",
+        method: "post",
+        data
     });
 }

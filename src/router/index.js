@@ -18,52 +18,49 @@ const YCMarket = () => import('../views/YC/page/YCMarket')
 const YCCode = () => import('../views/YC/page/YCCode')
 const YCResult = () => import('../views/YC/page/YCResult')
 
-const Auman = () => import('../views/Auman/Auman.vue')
-const AumanQuery = () => import('../views/Auman/page/AumanQuery.vue')
+const Filtration = () => import('../views/Filtration/Filtration.vue')
+const FiltrationQuery = () => import('../views/Filtration/page/FiltrationQuery.vue')
 
-const routes = [
-  {
+const routes = [{
     path: '/yc',
     name: 'yc',
     component: YC,
     children: [{
-      path: '',
-      name: 'ycQuery',
-      component: YCQuery
-    },
-    {
-      path: 'ycVCR',
-      name: 'ycVCR',
-      component: YCVCR
-    },
-    {
-      path: 'ycMarket',
-      name: 'ycMarket',
-      component: YCMarket
-    },
-    {
-      path: 'ycCode',
-      name: 'ycCode',
-      component: YCCode
-    },
-    {
-      path: 'ycResult',
-      name: 'ycResult',
-      component: YCResult
-    },
+        path: '',
+        name: 'ycQuery',
+        component: YCQuery
+      },
+      {
+        path: 'ycVCR',
+        name: 'ycVCR',
+        component: YCVCR
+      },
+      {
+        path: 'ycMarket',
+        name: 'ycMarket',
+        component: YCMarket
+      },
+      {
+        path: 'ycCode',
+        name: 'ycCode',
+        component: YCCode
+      },
+      {
+        path: 'ycResult',
+        name: 'ycResult',
+        component: YCResult
+      },
     ]
   },
   {
-    path: '/auman',
-    name: 'auman',
-    component: Auman,
-    children: [
-      {
-        path: '',
-        name: 'aumanQuery',
-        component: AumanQuery
-      }
-    ]
+    path: '/filtration',
+    name: 'filtration',
+    component: Filtration,
+    children: [{
+      path: '',
+      name: 'filtrationQuery',
+      component: FiltrationQuery
+    }]
   }
 ]
 
@@ -83,7 +80,8 @@ router.afterEach(() => {
 })
 
 const company = {
-  'yc': '玉柴正品配件防伪查询系统'
+  'yc': '玉柴正品配件防伪查询系统',
+  'filtration': 'Cummins Filtration'
 }
 
 router.beforeEach((to, from, next) => {
