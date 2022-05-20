@@ -27,10 +27,19 @@ export function ycQRCodeApi(sequenceCode, encryptCode) {
     });
 }
 
-// 弗列加查询
-export function filtrationQueryApi(data) {
+// 欧曼查询
+export function AumanQueryApi(data) {
     return request({
-        url: "filtrationQuery",
+        url: "aumanQuery",
+        method: "post",
+        data
+    });
+}
+
+// 锡柴查询
+export function xcQueryApi(data) {
+    return request({
+        url: "xcQuery",
         method: "post",
         data
     });

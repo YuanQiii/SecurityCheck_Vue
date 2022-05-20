@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div class="xc">
     <router-view />
   </div>
 </template>
 
 <script>
 export default {
-  name: "Filtration",
+  name: "XC",
 };
 </script>
 

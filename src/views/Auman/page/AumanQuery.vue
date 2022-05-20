@@ -8,7 +8,10 @@
       />
     </div>
     <div class="container">
-      <span class="title-direction" style="line-height: 1.7rem">
+      <span
+        class="title-direction"
+        style="line-height: 1.8rem; margin-bottom: 0.15rem"
+      >
         请选择产品类别，产品名称并刮开刮刮墨后输入序列码验证真伪并获取积分.</span
       >
       <span class="product-selection">
@@ -57,11 +60,16 @@
           @click="query"
         />
       </div>
-      <p class="instruction" style="clear: both">备注：序列号码区分大小写</p>
-      <div style="color: #d80303; font-size: 18px; margin-top: 1.3rem">
+      <p class="instruction" style="margin-top: 1.1rem">
+        备注：序列号码区分大小写
+      </p>
+      <div style="color: #d80303; font-size: 18px; margin-top: 1.15rem">
         如何鉴别弗列加品牌滤清器的真伪？
       </div>
-      <p class="instruction" style="clear: both; margin-top: 0.7rem">
+      <p
+        class="instruction"
+        style="clear: both; margin-top: 0.7rem; margin-bottom: 1rem"
+      >
         第一步：查看防伪标二维码底部序列号是否被激活
       </p>
       <div class="title-block">
@@ -70,49 +78,65 @@
         </span>
         <query-resuult :code="codeValue" :result="result" />
       </div>
-      <p class="instruction">第二步：检查产品或包装表面防伪标是否完整无损坏</p>
-      <div class="title-block" style="padding-bottom: 0.5rem">
-        <div style="line-height: 1.2rem; margin-top: 1px">
+      <p class="instruction" style="margin-bottom: 0.9rem; margin-top: 0.8rem">
+        第二步：检查产品或包装表面防伪标是否完整无损坏
+      </p>
+      <div class="title-block" style="padding-bottom: 0.65rem">
+        <div style="line-height: 1.1rem; margin-top: 0.2rem">
           请检查防伪标是否完整无损坏或存在任何被二次利用的痕迹。
         </div>
 
-        <div style="padding-top: 10px; line-height: 1.2rem">
+        <div style="line-height: 1.1rem; margin-top: 0.8rem">
           新旧标签均使用该防伪设计，请遵照同样的验证说明来鉴别真伪
           <div style="text-align: center">
             <span
               class="tilt_image"
-              style="
-                display: inline-block;
-                text-align: center;
-                margin-bottom: 0;
-              "
+              style="display: block; text-align: center; margin-bottom: 0"
             >
               <img
                 alt="Horizontal Label Design"
                 src="../../../images/auman/val_images_2020design.png"
-                style="height: auto; width: 250px"
+                style="
+                  height: auto;
+                  width: 250px;
+                  margin-bottom: -0.3vh;
+                  margin-top: 0.1rem;
+                "
               /><br />
               新
             </span>
-            <span
-              class="tilt_image"
-              style="display: inline-block; text-align: center"
-            >
+            <span class="tilt_image" style="display: block; text-align: center">
               <img
                 alt="Vertical Label Design"
                 src="../../../images/auman/val_images_2018design.png"
-                style="height: 250px; width: auto"
+                style="
+                  height: 250px;
+                  width: auto;
+                  margin-bottom: -0.3vh;
+                  margin-top: 0rem;
+                "
               /><br />
               旧
             </span>
           </div>
         </div>
       </div>
-      <p class="instruction" style="clear: both">
+      <p
+        class="instruction"
+        style="clear: both; line-height: 1.2rem; margin-top: 0.65rem"
+      >
         第三步：倾斜正品滤清的防伪标签，使其处于不同的角度时，您将清晰地观察到分别隐藏于弗列加品牌四周的1，2，3，4个光点。在点光源照射下可以获得最佳观测效果。
       </p>
 
-      <div class="title-block" style="text-align: center">
+      <div
+        class="title-block"
+        style="
+          text-align: center;
+          margin-top: -0.7rem;
+          padding-bottom: 0.55rem;
+          margin-bottom: -0.45rem;
+        "
+      >
         <span class="tilt_image">
           <img
             alt="Tilt Animation"
@@ -128,6 +152,7 @@
             <img
               alt="Tilt Right"
               src="../../../images/auman/val_images_tilt_right.jpg"
+              style="display: block"
           /></span>
           <span class="tilt_text">
             <span class="tilt_direction">向右倾斜</span><br />
@@ -139,6 +164,7 @@
             <img
               alt="Tilt Back"
               src="../../../images/auman/val_images_tilt_back.jpg"
+              style="display: block"
           /></span>
           <span class="tilt_text">
             <span class="tilt_direction">向后倾斜</span><br />
@@ -146,12 +172,13 @@
           </span>
         </div>
       </div>
-      <div class="block" style="margin-top: -1.5%">
+      <div class="block" style="margin-top: -0.45rem">
         <div class="tilt_block">
           <span class="tilt_image">
             <img
               alt="Tilt Left"
               src="../../../images/auman/val_images_tilt_left.jpg"
+              style="display: block"
           /></span>
           <span class="tilt_text">
             <span class="tilt_direction">向左倾斜</span><br />
@@ -163,6 +190,7 @@
             <img
               alt="Tilt Forward"
               src="../../../images/auman/val_images_tilt_forward.jpg"
+              style="display: block"
           /></span>
           <span class="tilt_text">
             <span class="tilt_direction">向前倾斜</span><br />
@@ -171,18 +199,20 @@
         </div>
       </div>
 
-      <p class="instruction" style="margin-top: 1.5%">
+      <p class="instruction" style="margin-top: 0.35rem">
         第四步：发现或疑似假件，联系我们
       </p>
       <div class="title-block">
-        <p>
+        <p style="margin-top: 0.85rem">
           康明斯滤清系统中国 <span style="color: #0000ee">400 821 6168</span>
         </p>
         <p>上海市浦东新区川沙新镇物流大道268号</p>
-        <p style="font-weight: bold; color: red">长按关注官方微信</p>
+        <p style="font-weight: bold; color: red; margin-top: -0.1rem">
+          长按关注官方微信
+        </p>
         <span class="qr_image" style="height: 50%; width: 50%">
           <img
-            style="margin-top: -1rem"
+            style="margin-top: -0.8rem; margin-bottom: 0.25rem"
             alt="QR Code"
             src="../../../images/auman/val_images_platform_qr.jpg"
         /></span>
@@ -193,10 +223,10 @@
 
 <script>
 import QueryResuult from "../components/QueryResuult.vue";
-import { filtrationQueryApi } from "@/api/query";
+import { AumanQueryApi } from "@/api/query";
 export default {
   components: { QueryResuult },
-  name: "FiltrationQuery",
+  name: "AumanQuery",
   data() {
     return {
       catagory: [
@@ -264,7 +294,7 @@ export default {
     query() {
       this.codeValue = this.value;
       if (this.check()) {
-        filtrationQueryApi({ sequenceCode: this.value }).then((response) => {
+        AumanQueryApi({ sequenceCode: this.value }).then((response) => {
           if (response.data.result == "real") {
             this.result = {
               type: 1,
@@ -350,30 +380,30 @@ export default {
   .container {
     background-color: #fff;
     margin: 0 auto;
-    width: 93%;
-    padding: 2.5%;
-    padding-top: 10px;
+    width: 96%;
+    padding: 2%;
+    padding-top: 0.85rem;
     padding-bottom: 1.3rem;
     .title-direction {
       display: block;
-      width: 100%;
+      width: 98vw;
       color: #d80303;
-      font-size: 150%;
+      font-size: 21px;
     }
     .product-selection {
       margin-right: 4px;
     }
     .large-input {
       font-size: 14pt;
+      margin-top: 0.2rem;
     }
     .btn {
-      height: 1.9rem;
+      height: 1.7rem;
       margin-left: -1px;
     }
     .code {
       width: 8.7rem;
       margin-right: 1px;
-      transform: translateY(0.1rem);
     }
     .instruction {
       font-weight: bold;
@@ -382,12 +412,13 @@ export default {
       text-align: center;
       width: 91%;
       border: solid 1px gray;
-      margin-top: -0.7rem;
+      margin-top: -0.65rem;
       padding-left: 10px;
-      padding-top: 10px;
+      padding-top: 0.55rem;
       padding-right: 12px;
-      padding-bottom: 1.2%;
-      margin-bottom: -7px;
+      padding-bottom: 0.3rem;
+      // margin-bottom: -1vh;
+      margin-bottom: -0.42rem;
       margin-left: 1%;
       .serial-location {
         margin-right: 10px;
@@ -409,8 +440,8 @@ export default {
         border: 1px solid gray;
         margin-top: 0.85rem;
         text-align: center;
-        padding-bottom: 7px;
-        padding-top: 10px;
+        padding-bottom: 0.6rem;
+        padding-top: 0.65rem;
         .tilt_direction {
           color: #d80303;
           font-size: 150%;
@@ -420,8 +451,9 @@ export default {
         }
         img {
           width: 86%;
-          margin-left: 4px;
+          margin: 0 auto;
           padding-right: 2px;
+          margin-bottom: 0.1rem;
         }
       }
     }

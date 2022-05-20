@@ -18,8 +18,14 @@ const YCMarket = () => import('../views/YC/page/YCMarket')
 const YCCode = () => import('../views/YC/page/YCCode')
 const YCResult = () => import('../views/YC/page/YCResult')
 
-const Filtration = () => import('../views/Filtration/Filtration.vue')
-const FiltrationQuery = () => import('../views/Filtration/page/FiltrationQuery.vue')
+const Auman = () => import('../views/Auman/Auman.vue')
+const AumanQuery = () => import('../views/Auman/page/AumanQuery.vue')
+
+const XC = () => import('../views/XC/XC.vue')
+const XCQuery = () => import('../views/XC/page/XCQuery.vue')
+const XCResult = () => import('../views/XC/page/XCResult.vue')
+const XCError = () => import('../views/XC/page/XCError.vue')
+
 
 const routes = [{
     path: '/yc',
@@ -53,14 +59,35 @@ const routes = [{
     ]
   },
   {
-    path: '/filtration',
-    name: 'filtration',
-    component: Filtration,
+    path: '/auman',
+    name: 'auman',
+    component: Auman,
     children: [{
       path: '',
-      name: 'filtrationQuery',
-      component: FiltrationQuery
+      name: 'aumanQuery',
+      component: AumanQuery
     }]
+  },
+  {
+    path: '/xc',
+    name: 'xc',
+    component: XC,
+    children: [{
+        path: '',
+        name: 'xcQuery',
+        component: XCQuery
+      },
+      {
+        path: 'xcResult',
+        name: 'xcResult',
+        component: XCResult
+      },
+      {
+        path: 'xcError',
+        name: 'xcError',
+        component: XCError
+      },
+    ]
   }
 ]
 
@@ -81,7 +108,8 @@ router.afterEach(() => {
 
 const company = {
   'yc': '玉柴正品配件防伪查询系统',
-  'filtration': 'Cummins Filtration'
+  'auman': 'Cummins Filtration',
+  'xc': '超级码区块链防伪溯源查询平台'
 }
 
 router.beforeEach((to, from, next) => {
